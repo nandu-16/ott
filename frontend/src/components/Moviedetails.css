@@ -1,0 +1,64 @@
+.moviedetails-page {
+    background-color: #ffeb3b; /* Yellow background */
+    color: #333; /* Text color */
+    overflow-y: auto; /* Enables scrolling */
+    height: 100vh; /* Full viewport height for scroll */
+  }
+  
+  .movie-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .movie-card {
+    height: 200px;
+    width: auto;
+    margin-right: 20px;
+    border-radius: 8px;
+    border: none;
+    transition: transform 0.2s;
+    background-color: #fff3cd;
+  }
+  
+  .movie-poster {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .movie-description {
+    font-size: 1.1rem;
+    margin-top: 15px;
+    color: #555;
+  }
+  
+  .movie-rating {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .watch-later-button {
+    background-color: #ffcc00;
+    color: #333;
+    font-weight: bold;
+    border: none;
+  }
+  
+  .watch-later-button:hover {
+    background-color: #ffb400;
+    color: #fff;
+  }
+  
+  .video-box {
+    margin-top: 20px;
+    background-color: #fff3cd;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .movie-video {
+    border-radius: 10px;
+  }
+  

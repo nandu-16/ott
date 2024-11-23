@@ -1,0 +1,13 @@
+.watch-history {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.watch-history h2 {
+    font-weight: bold;
+}
+
+.table-dark th {
+    background-color: #343a40;
+    color: #fff;
+}

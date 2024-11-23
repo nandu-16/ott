@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Content with Two Buttons</title>
+</head>
+<body>
+
+    <button id="button1"> First </button>
+    <button id="button2">Second</button>
+
+    <div id="content1"> first content.</div>
+    <div id="content2"> second content.</div>
+
+    <script>
+        // const content1 = document.getElementById('content1');
+        // const content2 = document.getElementById('content2');
+
+        // // Initially hide both content sections
+        // content1.style.display = 'none';
+        // content2.style.display = 'none';
+
+        document.getElementById('button1').addEventListener('click', () => {
+            // Show the first content and hide the second content
+            content1.style.display = 'block';
+            content2.style.display = 'none';
+        });
+
+        document.getElementById('button2').addEventListener('click', () => {
+            // Show the second content and hide the first content
+            content1.style.display = 'none';
+            content2.style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>

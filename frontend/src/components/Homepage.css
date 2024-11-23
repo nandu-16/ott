@@ -1,0 +1,23 @@
+/* Navbar with yellow background */
+.yellow-navbar {
+    background-color: #FFD700;
+    border-bottom: 1px solid #eaeaea; /* Optional: border for better definition */
+  }
+  
+  .yellow-navbar .navbar-toggler {
+    border-color: rgba(0, 0, 0, 0.1); /* Optional: adjust toggle button border */
+  }
+  
+  .yellow-navbar .navbar-toggler-icon {
+    background-image: url("https://w0.peakpx.com/wallpaper/866/28/HD-wallpaper-movie-bee-movie.jpg.jpg");
+  }
+  
+  .yellow-navbar .navbar-brand,
+  .yellow-navbar .nav-link {
+    color: #000;
+  }
+  
+  .yellow-navbar .nav-link:hover {
+    color: #333;
+  }
+  

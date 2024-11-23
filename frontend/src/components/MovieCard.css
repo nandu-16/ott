@@ -1,0 +1,28 @@
+.rowpost {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Add some space between the cards */
+    justify-content: center; /* Center the row */
+}
+
+.movie-card {
+    width: 150px; /* Adjust the width for a smaller card */
+    transition: transform 0.2s; /* Add transition effect */
+}
+
+.movie-card:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+}
+
+.card-img-top {
+    height: 180px; /* Reduced height for the thumbnail */
+    object-fit: cover; /* Cover the card without distortion */
+    border-radius: 8px; /* Optional: Add a slight roundness */
+}
+
+.card-body {
+    text-align: center; /* Center the text in the card body */
+    font-size: 14px; /* Adjust font size for a smaller card */
+    padding: 10px 5px; /* Add padding to balance the layout */
+}

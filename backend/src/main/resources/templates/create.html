@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Movie Form</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            width: 60%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .thumbnail-box, .video-box {
+            position: relative;
+        }
+
+        .thumbnail-box {
+            width: 100%;
+            height: 250px;
+            border: 2px dashed #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            margin-bottom: 20px;
+        }
+
+        .thumbnail-box img {
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        .video-box {
+            width: 100%;
+            height: 350px;
+            margin-top: 20px;
+        }
+
+        /* Remove button styling */
+        .remove-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .remove-btn:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Create Movie Form</h2>
+
+    <div class="form-container">
+        <form action="/adminmovies/createmovies" method="post" enctype="multipart/form-data">
+            <!-- Movie Title Field -->
+            <div class="mb-3">
+                <label for="movieTitle" class="form-label">Movie Title</label>
+                <input type="text" class="form-control" id="movieTitle" name="movieTitle" placeholder="Enter the movie title" required>
+            </div>
+
+            <!-- Movie Thumbnail File Upload -->
+            <div class="mb-3">
+                <label for="thumbnail" class="form-label">Upload Movie Thumbnail</label>
+                <input type="file" class="form-control" id="thumbnail" name="thumbnail" accept="image/*" onchange="previewThumbnail(event)">
+            </div>
+
+            <!-- Movie Thumbnail Preview -->
+            <div class="thumbnail-box" id="thumbnailPreview">
+                <span>Thumbnail Preview</span>
+                <button type="button" class="remove-btn" id="removeThumbnail" onclick="removeThumbnail()" style="display:none;">Remove</button>
+            </div>
+
+            <!-- Movie Description Field -->
+            <div class="mb-3">
+                <label for="movieDescription" class="form-label">Movie Description</label>
+                <textarea class="form-control" id="movieDescription" name="movieDescription" rows="4" placeholder="Enter a description of the movie" required></textarea>
+            </div>
+
+            <!-- Movie Video File Upload -->
+            <div class="mb-3">
+                <label for="movieVideo" class="form-label">Upload Movie Video</label>
+                <input type="file" class="form-control" id="movieVideo" name="movieVideo" accept="video/*" onchange="previewVideo(event)">
+            </div>
+
+            <!-- Video Player Box -->
+            <div class="video-box">
+                <video controls class="w-100 h-100" id="videoPreview">
+                    <source id="videoSource" src="">
+                    Your browser does not support the video tag.
+                </video>
+                <button type="button" class="remove-btn" id="removeVideo" onclick="removeVideo()" style="display:none;">Remove</button>
+            </div>
+
+            <!-- Update Button -->
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary">Update Movie</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript for Thumbnail and Video Preview with Remove functionality -->
+    <script>
+        // Thumbnail Preview
+        function previewThumbnail(event) {
+            var reader = new FileReader();
+            reader.onload = function(){
+                var output = document.getElementById('thumbnailPreview');
+                output.innerHTML = '<img src="' + reader.result + '" alt="Movie Thumbnail">';
+                document.getElementById('removeThumbnail').style.display = 'block';  // Show remove button
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
+        // Remove Thumbnail
+        function removeThumbnail() {
+            var preview = document.getElementById('thumbnailPreview');
+            preview.innerHTML = '<span>Thumbnail Preview</span>';
+            document.getElementById('thumbnail').value = '';  // Clear input
+            document.getElementById('removeThumbnail').style.display = 'none';  // Hide remove button
+        }
+
+        // Video Preview
+        function previewVideo(event) {
+            var file = event.target.files[0];
+            var videoSource = document.getElementById('videoSource');
+            var videoPreview = document.getElementById('videoPreview');
+            var fileURL = URL.createObjectURL(file);
+
+            videoSource.src = fileURL;
+            videoPreview.load();
+            document.getElementById('removeVideo').style.display = 'block';  // Show remove button
+        }
+
+        // Remove Video
+        function removeVideo() {
+            var videoSource = document.getElementById('videoSource');
+            var videoPreview = document.getElementById('videoPreview');
+            videoSource.src = '';
+            videoPreview.load();
+            document.getElementById('movieVideo').value = '';  // Clear input
+            document.getElementById('removeVideo').style.display = 'none';  // Hide remove button
+        }
+    </script>
+
+</body>
+</html>
